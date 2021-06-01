@@ -33,6 +33,10 @@ for line in sys.stdin:
 	# the result is a tuple with 6 elements
 	data = line.strip().split("\t")
 
+	# raise error when there are not six elements in the tuple
+	if len(data) != 6:
+		raise Exception("Every row of the inputdata needs to contain exactly 6 elements.")
+
 	# store the 6 elements of the tuple in seperate variables
 	date, time, item, category, sales, payment = data
 
