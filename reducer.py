@@ -43,9 +43,11 @@ for line in sys.stdin:
     if previous_key != None and previous_key != key:
         # Then write the result of the old key (Key=category, Value= Sum of Sales)
         # to the standart output (stdout)
+	# if the total number of purchases is higher than 114
         # Key and value are seperated by a tab (\t)
         # Line ends with new line (\n)
-        sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
+	if count_of_values > 114:
+        	sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
         # Sum of sales starts again with 0
         count_of_values = 0
 
@@ -57,5 +59,6 @@ for line in sys.stdin:
     # the previous key for the next iteration is the current key of the this iteration 
     previous_key = key
 
-# write the last result to stdout
-sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
+# write the last result to stdout, if the total number of purchases is higher than 114
+if count_of_values > 114:
+	sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
